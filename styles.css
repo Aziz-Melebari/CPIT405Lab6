@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px 16px 60px;
+    font-family: "Times New Roman", Times, serif;
+    color: #2b2b2b;
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 3.4rem;
+    margin: 0.4em 0 0.3em;
+}
+
+h2 {
+    font-size: 2.4rem;
+    margin: 0.4em 0 0.9em;
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin: 0.8em 0 0.5em;
+    color: #000;
+}
+
+/* ---------- Like / dislike buttons ---------- */
+.vote-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.vote-btn {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 4rem;
+    line-height: 1.2;
+    padding: 10px 44px;
+    min-width: 240px;
+    color: #000;
+    background: #e6e6eb;
+    border: 1px solid #767680;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+}
+
+.vote-btn:hover:not(:disabled) {
+    background: #d8d8df;
+    transform: translateY(-2px);
+}
+
+.vote-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* the button the user chose stays highlighted */
+.vote-btn.chosen {
+    opacity: 1;
+    background: #cfe3ff;
+    border-color: #2a6fdb;
+    box-shadow: 0 0 0 3px rgba(42, 111, 219, 0.25);
+}
+
+/* pop animation when a vote is cast */
+.vote-btn.pop {
+    animation: pop 0.35s ease;
+}
+
+@keyframes pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.status {
+    min-height: 1.4em;
+    margin: 12px 0 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* ---------- Comments ---------- */
+textarea {
+    display: block;
+    width: 100%;
+    max-width: 894px;
+    margin: 0 auto;
+    padding: 14px 16px;
+    font-size: 1.3rem;
+    border: 1px solid #c8c8c8;
+    border-radius: 8px;
+    resize: vertical;
+}
+
+textarea:disabled {
+    background: #f1f1f1;
+    cursor: not-allowed;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.action-btn {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    padding: 18px 35px;
+    color: #fff;
+    background: #4a4a4a;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.action-btn:hover:not(:disabled) {
+    background: #222;
+}
+
+.action-btn:active:not(:disabled) {
+    transform: scale(0.97);
+}
+
+.action-btn:disabled {
+    background: #9a9a9a;
+    cursor: not-allowed;
+}
+
+.message {
+    min-height: 1.4em;
+    margin: 16px 0 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    color: #1b6e3a;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.message.show { opacity: 1; }
+.message.error { color: #b3261e; }
+
+#comments-list {
+    list-style: none;
+    margin: 20px auto 0;
+    padding: 0;
+    max-width: 894px;
+    text-align: left;
+}
+
+#comments-list li {
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    background: #f6f6f8;
+    border: 1px solid #e0e0e6;
+    border-radius: 8px;
+    font-family: Helvetica, Arial, sans-serif;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    animation: fade-in 0.3s ease;
+}
+
+#comments-list li .meta {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.6rem; }
+    .vote-btn { font-size: 2.6rem; min-width: 150px; padding: 4px 24px; }
+    .action-btn { padding: 14px 26px; font-size: 1.1rem; }
+}
